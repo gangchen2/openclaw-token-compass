@@ -1,3 +1,0 @@
-[console_scripts]
-openclaw-token = openclaw_token_compass.cli:main
-openclaw-token-compass = openclaw_token_compass.cli:main
