@@ -27,6 +27,30 @@ function fileExists(p: string): boolean {
   }
 }
 
+function commandExists(cmd: string): boolean {
+  const pathEnv = process.env.PATH;
+  if (!pathEnv) {
+    return false;
+  }
+
+  const parts = pathEnv.split(path.delimiter).filter(Boolean);
+  const candidates: string[] = [];
+
+  for (const dir of parts) {
+    candidates.push(path.join(dir, cmd));
+    if (process.platform === "win32") {
+      const pathext = (process.env.PATHEXT || ".EXE;.CMD;.BAT;.COM")
+        .split(";")
+        .filter(Boolean);
+      for (const ext of pathext) {
+        candidates.push(path.join(dir, `${cmd}${ext}`));
+      }
+    }
+  }
+
+  return candidates.some((c) => fileExists(c));
+}
+
 function unique(items: string[]): string[] {
   const out: string[] = [];
   const seen = new Set<string>();
@@ -53,10 +77,10 @@ function candidateBinaries(config: PluginConfig): string[] {
   const candidates = [
     isNonEmptyString(fromEnv) ? fromEnv.trim() : "",
     isNonEmptyString(fromConfig) ? fromConfig.trim() : "",
-    "openclaw-token-compass",
-    "openclaw-token",
     localVenvInRepo,
     localVenvInWorkspace,
+    "openclaw-token-compass",
+    "openclaw-token",
   ];
 
   return unique(candidates);
@@ -65,7 +89,7 @@ function candidateBinaries(config: PluginConfig): string[] {
 function resolveBinary(config: PluginConfig): string {
   const candidates = candidateBinaries(config);
   for (const candidate of candidates) {
-    if (!maybePathLike(candidate)) {
+    if (!maybePathLike(candidate) && commandExists(candidate)) {
       return candidate;
     }
     if (fileExists(candidate)) {
