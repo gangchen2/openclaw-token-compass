@@ -1,0 +1,47 @@
+{
+  "run_id": "run_20260301_150000",
+  "project": "openclaw_demo_project",
+  "provider": "mixed",
+  "steps": [
+    {
+      "name": "requirements_analysis",
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "actual_input_tokens": 690,
+      "actual_output_tokens": 260,
+      "actual_total_tokens": 950
+    },
+    {
+      "name": "codebase_scan",
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "actual_input_tokens": 820,
+      "actual_output_tokens": 280,
+      "actual_total_tokens": 1100
+    },
+    {
+      "name": "implementation",
+      "provider": "anthropic",
+      "model": "claude-3-5-sonnet",
+      "actual_input_tokens": 1300,
+      "actual_output_tokens": 920,
+      "actual_total_tokens": 2220
+    },
+    {
+      "name": "test_and_fix",
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "actual_input_tokens": 910,
+      "actual_output_tokens": 480,
+      "actual_total_tokens": 1390
+    },
+    {
+      "name": "summary",
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "actual_input_tokens": 530,
+      "actual_output_tokens": 210,
+      "actual_total_tokens": 740
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+step=requirements_analysis api_interface=openai model=gpt-4o-mini prompt_tokens=690 completion_tokens=260 total_tokens=950
+step=codebase_scan api_interface=openai model=gpt-4o-mini prompt_tokens=820 completion_tokens=280 total_tokens=1100
+step=implementation api_interface=anthropic api_base=https://api.anthropic.com/v1/messages model=claude-3-5-sonnet prompt_tokens=1300 completion_tokens=920 total_tokens=2220
+step=test_and_fix api_interface=openai model=gpt-4o-mini prompt_tokens=910 completion_tokens=480 total_tokens=1390
+step=summary api_interface=openai model=gpt-4o-mini prompt_tokens=530 completion_tokens=210 total_tokens=740

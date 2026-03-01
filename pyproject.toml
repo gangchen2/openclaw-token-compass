@@ -1,0 +1,23 @@
+[project]
+name = "openclaw-token-compass"
+version = "0.1.0"
+description = "Provider-aware token estimation and calibration toolkit for OpenClaw workflows"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "tiktoken>=0.7.0",
+]
+
+[project.scripts]
+openclaw-token-compass = "openclaw_token_compass.cli:main"
+openclaw-token = "openclaw_token_compass.cli:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

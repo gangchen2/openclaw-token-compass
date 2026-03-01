@@ -1,0 +1,39 @@
+{
+  "project": "openclaw_demo_project",
+  "api_interface": "openai",
+  "api_base": "https://api.openai.com/v1",
+  "steps": [
+    {
+      "name": "requirements_analysis",
+      "model": "gpt-4o-mini",
+      "input_text": "阅读用户需求，提取目标、约束、交付物，并输出结构化任务清单。",
+      "expected_output_tokens": 220
+    },
+    {
+      "name": "codebase_scan",
+      "model": "gpt-4o-mini",
+      "input_text": "扫描仓库目录，识别关键模块、依赖和可能的改动范围，输出风险点。",
+      "output_token_ratio": 0.25
+    },
+    {
+      "name": "implementation",
+      "api_interface": "anthropic",
+      "api_base": "https://api.anthropic.com/v1/messages",
+      "model": "claude-3-5-sonnet",
+      "input_text": "根据任务清单和代码扫描结果实施功能改动，生成补丁并解释变更理由。",
+      "output_token_ratio": 0.55
+    },
+    {
+      "name": "test_and_fix",
+      "model": "gpt-4o-mini",
+      "input_text": "运行测试、定位失败原因、修复问题并再次验证通过。",
+      "output_token_ratio": 0.40
+    },
+    {
+      "name": "summary",
+      "model": "gpt-4o-mini",
+      "input_text": "总结变更内容、影响范围、后续建议，形成交付说明。",
+      "expected_output_tokens": 180
+    }
+  ]
+}
