@@ -1,0 +1,19 @@
+{
+  "id": "token-compass",
+  "name": "OpenClaw Token Compass Bridge",
+  "description": "Bridge plugin that exposes OpenClaw Token Compass CLI as tools.",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "binPath": {
+        "type": "string",
+        "description": "Absolute path to openclaw-token-compass executable."
+      },
+      "dbPath": {
+        "type": "string",
+        "description": "Absolute path to SQLite database used by token compass."
+      }
+    }
+  }
+}

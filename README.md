@@ -32,6 +32,39 @@ CLI commands after install:
 - `openclaw-token-compass` (new primary command)
 - `openclaw-token` (backward-compatible alias)
 
+## Use As An OpenClaw Plugin
+
+This repository includes a ready-to-install bridge plugin in [`openclaw-plugin`](./openclaw-plugin).
+
+One-step install:
+
+```bash
+cd /Users/chengang/Documents/New\ project/openclaw-token-compass
+./scripts/install_openclaw_plugin.sh
+```
+
+Manual install:
+
+```bash
+openclaw plugins install -l /Users/chengang/Documents/New\ project/openclaw-token-compass/openclaw-plugin
+openclaw plugins enable token-compass
+openclaw plugins info token-compass
+```
+
+Recommended environment variables:
+
+```bash
+export TOKEN_COMPASS_BIN="/Users/chengang/Documents/New project/.venv/bin/openclaw-token-compass"
+export TOKEN_COMPASS_DB="/Users/chengang/Documents/New project/openclaw-token-compass/data/token_forecast.db"
+```
+
+Registered plugin tools:
+
+- `token_compass_estimate`
+- `token_compass_extract_actual`
+- `token_compass_record`
+- `token_compass_stats`
+
 ## Quick Start
 
 ### 1) Initialize database
